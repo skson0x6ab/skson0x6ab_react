@@ -3,9 +3,6 @@ import { Navbar } from "@/components/Navbar";
 
 import { ScrollToTop } from "@/components/ScrollToTop";
 
-import { SampleAspectRatio } from "@/components/SampleAspectRatio";
-
-import { SampleCard } from "@/components/SampleCard";
 
 export function Layout() {
   return (

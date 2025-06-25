@@ -3,7 +3,6 @@ import { fetchJsonData } from "../services/fetchJsonData";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -11,11 +10,15 @@ import {
 } from "@/components/ui/table";
 
 import { readWriteJsonData } from "../services/readWriteJsonData";
-import { Check, Linkedin } from "lucide-react";
+import { Check } from "lucide-react";
 import { Badge } from "./ui/badge";
 
+interface RedeemCode {
+  code: string;
+}
+
 export const ZenlessRedeemCode: React.FC = () => {
-  const [codes, setCodes] = useState<string[]>([]);
+  const [codes, setCodes] = useState<RedeemCode[]>([]); // ✅ 타입 수정
   const [usedCodes, setUsedCodes] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
@@ -41,7 +44,7 @@ export const ZenlessRedeemCode: React.FC = () => {
 
   // 사용된 코드에 추가하는 함수: 실제 API 연동 필요
   const markCodeAsUsed = async (code: string) => {
-    await readWriteJsonData(code, 'genshinRedeemCodeUsed');
+    await readWriteJsonData(code, 'zenlessRedeemCodeUsed');
   };
 
   const handleMarkUsed = async (code: string) => {

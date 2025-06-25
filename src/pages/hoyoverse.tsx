@@ -1,9 +1,7 @@
 import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
-import { FF14Dashboard } from "@/components/FF14Dashboard";
 import { RedeemCodeTable } from "@/components/RedeemCodeTable";
 import { GenshinRedeemCode } from "@/components/GenshinRedeemCode";
 import { StarRailRedeemCode } from "@/components/StarRailRedeemCode";
