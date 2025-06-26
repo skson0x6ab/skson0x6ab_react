@@ -25,20 +25,8 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "/layout",
-    label: "Layout",
-  },
-  {
-    href: "/formcontrols",
-    label: "Form Controls",
-  },
-  {
-    href: "/navigation",
-    label: "Navigation",
-  },
-  {
-    href: "/feedbackdisplay",
-    label: "Feedback & Display",
+    href: "/shadcncomponenets",
+    label: "Shadcn Components",
   },
   {
     href: "/hoyoverse",
