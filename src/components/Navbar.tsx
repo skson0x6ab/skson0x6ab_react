@@ -29,7 +29,7 @@ const routeList: RouteProps[] = [
     label: "Layout",
   },
   {
-    href: "/fromcontrols",
+    href: "/formcontrols",
     label: "Form Controls",
   },
   {

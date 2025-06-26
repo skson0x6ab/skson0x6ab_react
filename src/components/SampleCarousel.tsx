@@ -11,7 +11,7 @@ export function SampleCarousel() {
   return (
     <section
       id="SampleCarousel"
-      className="container py-24 sm:py-10"
+      className="container py-24 sm:py-10 flex flex-col items-center"
     >
       <h2 className="text-3xl md:text-4xl font-bold mb-4">
         Sample {" "}
