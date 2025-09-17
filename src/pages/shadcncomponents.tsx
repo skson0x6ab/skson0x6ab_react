@@ -12,7 +12,6 @@ import { SampleBadge } from "@/components/SampleBadge";
 import { SampleCarousel } from "@/components/SampleCarousel";
 import { SampleBreadcrumb } from "@/components/SampleBreadcrumb";
 import { SampleCalendar } from "@/components/SampleCalendar";
-import { SampleChart } from "@/components/SampleChart";
 import { SampleCheckbox } from "@/components/SampleCheckbox";
 import { SampleCard } from "@/components/SampleCard";
 
@@ -32,7 +31,6 @@ export function ShadcnComponents() {
         <SampleCard />
         <SampleCarousel />
         <SampleCheckbox />
-        <SampleChart />
       </div>
       <Footer />
       <ScrollToTop />
