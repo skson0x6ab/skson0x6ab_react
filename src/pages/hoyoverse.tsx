@@ -2,10 +2,8 @@ import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
-import { RedeemCodeTable } from "@/components/RedeemCodeTable";
 import { GenshinRedeemCode } from "@/components/GenshinRedeemCode";
 import { StarRailRedeemCode } from "@/components/StarRailRedeemCode";
-import { ZenlessRedeemCode } from "@/components/ZenlessRedeemCode";
 
 export function Hoyoverse() {
   return (
@@ -23,12 +21,10 @@ export function Hoyoverse() {
 
   {/* 2. 이어지는 콘텐츠 영역 */}
   <div className="bg-furina_extend bg-cover bg-center min-h-screen py-10">
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 my-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 my-8">
       <GenshinRedeemCode />
       <StarRailRedeemCode />
-      <ZenlessRedeemCode />
     </div>
-    <RedeemCodeTable />
     <Footer />
     <ScrollToTop />
   </div>

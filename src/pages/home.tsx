@@ -1,9 +1,8 @@
-import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Navbar } from "@/components/Navbar";
 import { ScrollToTop } from "@/components/ScrollToTop";
-
+import { Stock } from "@/components/Stock";
 
 
 export function Home() {
@@ -11,7 +10,7 @@ export function Home() {
     <>
       <Navbar />
       <Hero />
-      <FAQ />
+      <Stock />
       <Footer />
       <ScrollToTop />
     </>
