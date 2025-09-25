@@ -5,7 +5,7 @@ import { Home } from "./pages/home";
 import { ShadcnComponents } from "./pages/shadcncomponents";
 import { Hoyoverse } from "./pages/hoyoverse";
 import { Dashboard } from "./pages/dashboard";
-
+import { Stock } from "./pages/stock";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
           <Route path="/shadcncomponents" element={<ShadcnComponents />} />
           <Route path="/hoyoverse" element={<Hoyoverse />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/stock" element={<Stock />} />
         </Routes>
     </Router>
   );

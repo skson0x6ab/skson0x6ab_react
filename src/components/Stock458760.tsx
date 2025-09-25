@@ -131,7 +131,7 @@ export function Stock458760() {
   return (
     <section className="container place-items-center py-20 md:py-32 gap-10">
       <div className="w-full">
-      <h2 className="text-2xl font-bold tracking-tight mb-4">TIGER 미국배당다우존스타겟커버드콜2호</h2>
+      <h2 className="text-2xl font-bold tracking-tight mb-4">Tiger 미국배당다우존스타겟커버드콜2호</h2>
         <div className="flex items-center py-4">
           <Input
             placeholder="날짜로 필터링..."

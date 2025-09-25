@@ -72,7 +72,7 @@ export const columns: ColumnDef<StockData>[] = [
   },
 ]
 
-export function Stock483290() {
+export function Stock379810() {
   const [data, setData] = React.useState<StockData[]>([])
   const [loading, setLoading] = React.useState(true)
   const [error, setError] = React.useState("")
@@ -91,8 +91,8 @@ export function Stock483290() {
         const yyyymm = `${year}${month}`
 
         const result = await fetchJsonData(
-          `stock_483290_${yyyymm}`,
-          `stock_483290_${yyyymm}`,
+          `stock_379810_${yyyymm}`,
+          `stock_379810_${yyyymm}`,
           "skson0x6ab_InformationRepository"
         )
         setData(result || [])
@@ -131,7 +131,7 @@ export function Stock483290() {
   return (
     <section className="container place-items-center py-20 md:py-32 gap-10">
       <div className="w-full">
-      <h2 className="text-2xl font-bold tracking-tight mb-4">Kodex 미국배당다우존스타겟커버드콜</h2>
+      <h2 className="text-2xl font-bold tracking-tight mb-4">Kodex 미국나스닥100</h2>
         <div className="flex items-center py-4">
           <Input
             placeholder="날짜로 필터링..."
@@ -168,12 +168,12 @@ export function Stock483290() {
         </div>
 
         <div className="overflow-hidden rounded-md border">
-          <Table>
+          <Table className="table-fixed">
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
-                    <TableHead key={header.id} className="text-center">
+                    <TableHead key={header.id} className="text-center ">
                       {header.isPlaceholder
                         ? null
                         : flexRender(

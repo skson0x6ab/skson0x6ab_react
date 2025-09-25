@@ -25,6 +25,10 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
+    href: "/Stock",
+    label: "Stock",
+  },
+  {
     href: "/shadcncomponents",
     label: "Shadcn Components",
   },
