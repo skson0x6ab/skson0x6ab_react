@@ -7,9 +7,8 @@ export const Hero = () => {
         <main className="flex flex-col text-5xl md:text-7xl font-bold space-y-4">
           <h1>
             <span className="bg-gradient-to-r from-[#F596D3] to-[#D247BF] text-transparent bg-clip-text">
-              SK
-            </span>{" "}
             Playground
+            </span>{" "}
           </h1>
 
           <h2>

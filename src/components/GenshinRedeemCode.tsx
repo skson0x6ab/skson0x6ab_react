@@ -1,3 +1,4 @@
+import { useAuth } from "@/context/AuthContext";
 import React, { useEffect, useState } from "react";
 import { fetchJsonData } from "../services/fetchJsonData";
 import {
@@ -22,6 +23,7 @@ export const GenshinRedeemCode: React.FC = () => {
   const [usedCodes, setUsedCodes] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,27 +75,28 @@ export const GenshinRedeemCode: React.FC = () => {
           <Table className="table-fixed w-full">
             <TableHeader>
               <TableRow>
-                <TableHead className="text-center text-cyan-200">Status</TableHead>
-                <TableHead className="text-center text-lime-100">Redeem Code</TableHead>
+                {isLoggedIn && <TableHead className="text-center text-cyan-200">Status</TableHead>}
+                <TableHead className="text-center text-lime-100">Available RedeemCodes</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {codes.map((item, index) => (
                 <TableRow key={index}>
-                  <TableCell className="text-center text-white">
-                    {usedCodes.includes(item.code) ? (
-                      <div className="flex justify-center items-center">
-                        <Check className="w-4 h-4 text-emerald-300 mr-1" />
-                      </div>
-                    ) : (
-                      <Badge
-                        onClick={() => handleMarkUsed(item.code)}
-                        className="cursor-pointer bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1 rounded"
-                      >
-                        사용 필요
-                      </Badge>
-                    )}
-                  </TableCell>
+                  {isLoggedIn && (
+                    <TableCell className="text-center text-white">
+                      {usedCodes.includes(item.code) ? (
+                        <div className="flex justify-center items-center">
+                          <Check className="w-4 h-4 text-emerald-300 mr-1" />
+                        </div>
+                      ) : (
+                        <Badge
+                          onClick={() => handleMarkUsed(item.code)}
+                          className="cursor-pointer bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1 rounded"
+                        >
+                          사용 필요
+                        </Badge>
+                      )}
+                    </TableCell>)}
                   <TableCell className="text-center">
                     <span
                       onClick={() =>

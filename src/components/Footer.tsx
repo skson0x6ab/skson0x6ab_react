@@ -1,5 +1,3 @@
-import { LogoIcon } from "./Icons";
-
 export const Footer = () => {
   return (
     <footer id="footer">
@@ -7,14 +5,17 @@ export const Footer = () => {
 
       <section className="container py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
         <div className="col-span-full xl:col-span-2">
+        <h3>
+          &copy; 2025 Created by{" "}
           <a
             rel="noreferrer noopener"
-            href="/"
-            className="font-bold text-xl flex"
+            target="_blank"
+            href="#"
+            className="text-primary transition-all border-primary hover:border-b-2"
           >
-            <LogoIcon />
-            Skson0x6ab
+            skson0x6ab
           </a>
+        </h3>
         </div>
 
         <div className="flex flex-col gap-2">
@@ -137,31 +138,9 @@ export const Footer = () => {
             </a>
           </div>
 
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Twitch
-            </a>
-          </div>
         </div>
       </section>
 
-      <section className="container pb-14 text-center">
-        <h3>
-          &copy; 2025 Created by{" "}
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href="#"
-            className="text-primary transition-all border-primary hover:border-b-2"
-          >
-            skson0x6ab
-          </a>
-        </h3>
-      </section>
     </footer>
   );
 };

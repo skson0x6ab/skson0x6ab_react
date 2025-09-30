@@ -1,3 +1,4 @@
+import { useAuth } from "@/context/AuthContext";
 import React, { useEffect, useState } from "react";
 import { fetchJsonData } from "../services/fetchJsonData";
 import {
@@ -22,6 +23,7 @@ export const StarRailRedeemCode: React.FC = () => {
   const [usedCodes, setUsedCodes] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,41 +65,42 @@ export const StarRailRedeemCode: React.FC = () => {
     <section id="redeem" className="container py-24 sm:py-10">
       <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
         <span className="bg-gradient-to-b from-[#D47BFF] to-[#7FFFD4] text-transparent bg-clip-text">
-          Honkai: StarRail
+          Genshin Impact
         </span>
       </h2>
       <div className="bg-[#1e1b4b]/20 border border-[#7c3aed]/20 backdrop-blur-sm rounded-lg py-1 px-3">
         {codes.length === 0 ? (
           <p className="text-center text-gray-500">사용 가능한 코드가 없습니다.</p>
         ) : (
-          <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="text-center text-cyan-200">Status</TableHead>
-              <TableHead className="text-center text-lime-100">Redeem Code</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {codes.map((item, index) => (
-              <TableRow key={index}>
-                <TableCell className="text-center text-white">
-                  {usedCodes.includes(item.code) ? (
-                    <div className="flex justify-center items-center">
-                      <Check className="w-4 h-4 text-emerald-300 mr-1" />
-                    </div>
-                  ) : (
-                    <Badge
-                      onClick={() => handleMarkUsed(item.code)}
-                      className="cursor-pointer bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1 rounded"
-                    >
-                      사용 필요
-                    </Badge>
-                  )}
-                </TableCell>
-                <TableCell className="text-center">
-                  <span
-                    onClick={() =>
-                      window.open(`https://hsr.hoyoverse.com/gift?code=${item.code}`, "_blank")
+          <Table className="table-fixed w-full">
+            <TableHeader>
+              <TableRow>
+                {isLoggedIn && <TableHead className="text-center text-cyan-200">Status</TableHead>}
+                <TableHead className="text-center text-lime-100">Available RedeemCodes</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {codes.map((item, index) => (
+                <TableRow key={index}>
+                  {isLoggedIn && (
+                    <TableCell className="text-center text-white">
+                      {usedCodes.includes(item.code) ? (
+                        <div className="flex justify-center items-center">
+                          <Check className="w-4 h-4 text-emerald-300 mr-1" />
+                        </div>
+                      ) : (
+                        <Badge
+                          onClick={() => handleMarkUsed(item.code)}
+                          className="cursor-pointer bg-indigo-500 hover:bg-indigo-400 text-white px-3 py-1 rounded"
+                        >
+                          사용 필요
+                        </Badge>
+                      )}
+                    </TableCell>)}
+                  <TableCell className="text-center">
+                    <span
+                      onClick={() =>
+                        window.open(`https://hsr.hoyoverse.com/gift?code=${item.code}`, "_blank")
                     }
                     className="cursor-pointer text-cyan-200 hover:text-lime-200"
                   >

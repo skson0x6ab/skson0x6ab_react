@@ -13,15 +13,12 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table"
-import { ChevronDown } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
   Table,
@@ -34,7 +31,6 @@ import {
 
 import { fetchJsonData } from "../services/fetchJsonData"
 
-// ✅ StockData 인터페이스
 export interface StockData {
   date: string
   price: number
@@ -43,12 +39,12 @@ export interface StockData {
   waiting: number
 }
 
-// ✅ 컬럼 정의
 export const columns: ColumnDef<StockData>[] = [
   {
     accessorKey: "date",
+    accessorFn: row => new Date(row.date), // ✅ 정렬용 Date 객체
     header: "날짜",
-    cell: ({ row }) => <div className="text-center">{row.getValue("date")}</div>,
+    cell: ({ row }) => <div className="text-center">{row.original.date}</div>,
   },
   {
     accessorKey: "price",
@@ -77,10 +73,16 @@ export function Stock379810() {
   const [loading, setLoading] = React.useState(true)
   const [error, setError] = React.useState("")
 
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [sorting, setSorting] = React.useState<SortingState>([
+    { id: "date", desc: true }, // ✅ 최신순 정렬
+  ])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+  const [pagination, setPagination] = React.useState({
+    pageIndex: 0,
+    pageSize: 5,
+  })
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -111,6 +113,7 @@ export function Stock379810() {
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
+    onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -122,6 +125,7 @@ export function Stock379810() {
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination,
     },
   })
 
@@ -131,22 +135,9 @@ export function Stock379810() {
   return (
     <section className="container place-items-center py-20 md:py-32 gap-10">
       <div className="w-full">
-      <h2 className="text-2xl font-bold tracking-tight mb-4">Kodex 미국나스닥100</h2>
+        <h2 className="text-2xl font-bold tracking-tight mb-4">Kodex 미국나스닥100 (379810)</h2>
         <div className="flex items-center py-4">
-          <Input
-            placeholder="날짜로 필터링..."
-            value={(table.getColumn("date")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("date")?.setFilterValue(event.target.value)
-            }
-            className="max-w-sm"
-          />
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="ml-auto">
-                Columns <ChevronDown />
-              </Button>
-            </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               {table
                 .getAllColumns()
@@ -173,7 +164,7 @@ export function Stock379810() {
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
-                    <TableHead key={header.id} className="text-center ">
+                    <TableHead key={header.id} className="text-center">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -215,9 +206,14 @@ export function Stock379810() {
 
         <div className="flex items-center justify-end space-x-2 py-4">
           <div className="text-muted-foreground flex-1 text-sm">
-            {table.getFilteredSelectedRowModel().rows.length} of{" "}
-            {table.getFilteredRowModel().rows.length} row(s) selected.
           </div>
+
+          {/* ✅ 페이지 정보 표시 */}
+          <div className="text-sm text-muted-foreground">
+            Page {table.getState().pagination.pageIndex + 1} of{" "}
+            {table.getPageCount()}
+          </div>
+
           <div className="space-x-2">
             <Button
               variant="outline"
