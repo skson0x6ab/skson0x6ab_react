@@ -662,3 +662,37 @@ export const MagnifierIcon = () => {
     </svg>
   );
 };
+
+import myImage1 from "@/assets/react.svg"
+import myImage2 from "@/assets/black_ogu.png"
+
+export const ReactIcon = () => {
+  return (
+    <img 
+      src={myImage1} 
+      alt="My Logo1" 
+      className="mr-2 w-6 h-6"
+    >
+    </img>
+  );
+};
+
+export const BlackoguIcon = () => {
+  return (
+    <img 
+      src={myImage2} 
+      alt="My Logo2" 
+      className="mr-2 w-6 h-6"
+    >
+      <rect
+        width="18"
+        height="18"
+        x="3"
+        y="3"
+        rx="2"
+      />
+      <path d="M3 9h18" />
+      <path d="M9 21V9" />
+    </img>
+  );
+};

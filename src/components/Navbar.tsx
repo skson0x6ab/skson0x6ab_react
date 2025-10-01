@@ -17,15 +17,16 @@ import {
   AvatarIcon,
   Cross1Icon,
   ExitIcon,
+  CodeSandboxLogoIcon
 } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { LoginForm } from "@/components/login-form";
 import { useAuth } from "@/context/AuthContext";
+import { cn } from "@/utils/cn"; 
 
 interface RouteProps {
   href: string;
@@ -98,7 +99,7 @@ export const Navbar = () => {
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between">
           <NavigationMenuItem className="font-bold flex">
             <a rel="noreferrer noopener" href="/" className="ml-2 font-bold text-xl flex">
-              <LogoIcon />
+              <CodeSandboxLogoIcon className="mr-2 w-7 h-7" />
               Playground
             </a>
           </NavigationMenuItem>
@@ -126,7 +127,10 @@ export const Navbar = () => {
                       key={label}
                       href={href}
                       onClick={() => setIsOpen(false)}
-                      className={buttonVariants({ variant: "ghost" })}
+                      className={cn(
+                        buttonVariants({ variant: "ghost" }),
+                        "font-sans font-semibold text-sm" 
+                      )}
                     >
                       {label}
                     </a>
@@ -137,13 +141,16 @@ export const Navbar = () => {
           </span>
 
           {/* 데스크탑 */}
-          <nav className="hidden md:flex gap-2">
+          <nav className="hidden md:flex gap-2 ">
             {routeList.map((route, i) => (
               <a
                 rel="noreferrer noopener"
                 href={route.href}
                 key={i}
-                className={`text-[17px] ${buttonVariants({ variant: "ghost" })}`}
+                className={cn(
+                  buttonVariants({ variant: "ghost" }),
+                  "font-sans font-semibold text-sm" 
+                )}
               >
                 {route.label}
               </a>

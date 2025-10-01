@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchJsonData } from "../services/fetchJsonData"; // API 호출 함수
+import { fetchJsonData } from "../../services/fetchJsonData"; // API 호출 함수
 import {
   Table,
   TableBody,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchJsonData } from "../services/fetchJsonData";
+import { fetchJsonData } from "../../services/fetchJsonData";
 import {
   Table,
   TableBody,
@@ -9,9 +9,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { readWriteJsonData } from "../services/readWriteJsonData";
+import { readWriteJsonData } from "../../services/readWriteJsonData";
 import { Check } from "lucide-react";
-import { Badge } from "./ui/badge";
+import { Badge } from "../ui/badge";
 
 interface RedeemCode {
   code: string;
