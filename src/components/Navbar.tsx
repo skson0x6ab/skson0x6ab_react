@@ -16,17 +16,16 @@ import {
   GitHubLogoIcon,
   AvatarIcon,
   Cross1Icon,
-  ExitIcon,
   CodeSandboxLogoIcon
 } from "@radix-ui/react-icons";
-import { buttonVariants } from "./ui/button";
+import { buttonVariants, Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { LoginForm } from "@/components/login-form";
 import { useAuth } from "@/context/AuthContext";
-import { cn } from "@/utils/cn"; 
+import { cn } from "@/utils/cn";
 
 interface RouteProps {
   href: string;
@@ -65,9 +64,16 @@ export const Navbar = () => {
       <Dialog.Trigger asChild>
         <button>
           {!isLoggedIn ? (
-            <AvatarIcon className="w-5 h-5" />
+            <div className="flex gap-2">
+              <Button variant="outline" className="flex items-center justify-center">
+                <span className="font-sans font-semibold text-sm">Log In</span>
+              </Button>
+              <Button variant="secondary" className="flex items-center justify-center">
+                <span className="font-sans font-semibold text-sm">Sign Up</span>
+              </Button>
+            </div>
           ) : (
-            <ExitIcon className="w-5 h-5" onClick={handleLogout} />
+            <AvatarIcon className="w-5 h-5" onClick={handleLogout} />
           )}
         </button>
       </Dialog.Trigger>
@@ -129,7 +135,7 @@ export const Navbar = () => {
                       onClick={() => setIsOpen(false)}
                       className={cn(
                         buttonVariants({ variant: "ghost" }),
-                        "font-sans font-semibold text-sm" 
+                        "font-sans font-semibold text-sm"
                       )}
                     >
                       {label}
@@ -149,7 +155,7 @@ export const Navbar = () => {
                 key={i}
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
-                  "font-sans font-semibold text-sm" 
+                  "font-sans font-semibold text-sm"
                 )}
               >
                 {route.label}

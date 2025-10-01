@@ -5,12 +5,15 @@ import {
   Bot,
   Command,
   Frame,
-  GalleryVerticalEnd,
   Map,
   PieChart,
   Settings2,
   SquareTerminal,
 } from "lucide-react"
+
+import {
+  CodeSandboxLogoIcon
+} from "@radix-ui/react-icons"
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
 import { NavUser } from "@/components/nav-user"
@@ -31,8 +34,8 @@ const data = {
   },
   teams: [
     {
-      name: "Acme",
-      logo: GalleryVerticalEnd,
+      name: "Playground",
+      logo: CodeSandboxLogoIcon,
       plan: "Enterprise",
     },
     {

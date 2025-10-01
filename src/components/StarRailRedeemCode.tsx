@@ -65,7 +65,7 @@ export const StarRailRedeemCode: React.FC = () => {
     <section id="redeem" className="container py-24 sm:py-10">
       <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
         <span className="bg-gradient-to-b from-[#D47BFF] to-[#7FFFD4] text-transparent bg-clip-text">
-          Genshin Impact
+          Honkai: StarRail
         </span>
       </h2>
       <div className="bg-[#1e1b4b]/20 border border-[#7c3aed]/20 backdrop-blur-sm rounded-lg py-1 px-3">
